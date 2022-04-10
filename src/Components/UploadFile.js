@@ -83,7 +83,7 @@ function UploadFile(props) {
 
     }
   return (
-    <div>
+    <div style={{marginTop:'5rem',marginBottom:'1rem'}}>
         {error!=''?<Alert severity="error">{error}</Alert>: success? <Alert severity="success">Your Video is Uploaded Successfully</Alert> :
         <>
             <input type="file" accept='video/*' onChange={(e)=>handleChange(e.target.files[0])} id='upload-input' style={{display:'none'}} />
@@ -95,7 +95,7 @@ function UploadFile(props) {
                 loadingPosition="start"
                 component="span"
                 startIcon={<MovieIcon/>}
-            >Upload Video</LoadingButton>
+            >Post New Video</LoadingButton>
             </label>
             {loading && <LinearProgress color="secondary" variant="determinate" value={uploaded} />}
         </>

@@ -9,19 +9,16 @@ import './Posts.css'
 import CommentIcon from '@mui/icons-material/Comment';
 import Dialog from '@mui/material/Dialog';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import CloseIcon from "@material-ui/icons/Close";
 import Addcomment from './Addcomment';
 import Comments from './Comments';
+import { useNavigate } from 'react-router-dom';
 
 function Posts({ userData }) {
+    const history = useNavigate();
     const [posts, setPost] = useState(null);
     const [open, setOpen] = React.useState(null);
 
@@ -46,6 +43,7 @@ function Posts({ userData }) {
         return unsub
     }, [])
 
+
     return (
         <div>
             {
@@ -58,7 +56,7 @@ function Posts({ userData }) {
                                         <Video src={post.pUrl} />
                                         <div className="fa" style={{ display: 'flex' }}>
                                             <Avatar src={post.uProfile} />
-                                            <h4>{post.uName}</h4>
+                                            <h4 style={{cursor:'pointer'}} onClick={()=>history(`/profile/${post.userID}`)}>{post.uName}</h4>
                                         </div>
                                         <Like userData={userData} postData={post} />
                                         <CommentIcon className='comment-styling' onClick={() => handleClickOpen(post.pId)} />

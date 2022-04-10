@@ -11,7 +11,7 @@ function Comments({postData}) {
             arr.push(data.data())
         }
         setComments(arr)
-    },[postData])
+    })
     
   return (
     <div style={{height:'100%',scroll:'auto'}}>

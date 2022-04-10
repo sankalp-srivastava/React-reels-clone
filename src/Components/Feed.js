@@ -3,6 +3,7 @@ import { AuthContext } from '../Context/AuthContext'
 import UploadFile from './UploadFile'
 import Posts from './Posts'
 import {database} from '../Firebase'
+import Navbar from './Navbar'
 
 function Feed() {
   const { user, logout } = useContext(AuthContext)
@@ -14,14 +15,13 @@ function Feed() {
     return ()=>{unsub()}
   },[user])
   return (
+    <>
+      <Navbar userData={userData}/>
     <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' ,alignItems:'center'}}>
-      <div className="comp" style={{ width: '50%' }}>
-        <h1>Welcome to feed</h1>
-        <button onClick={logout}>Logout</button>
-      </div>
         <UploadFile user={userData} />
         <Posts userData={userData} />
     </div>
+    </>
   )
 }
 
